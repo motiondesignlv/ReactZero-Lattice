@@ -1,9 +1,9 @@
 import { CodeBlock } from '../components/CodeBlock'
 
-const installCode = `npm install reactzero-lattice
+const installCode = `npm install @reactzero/lattice
 # core, react bindings, and all plugins ship in a single tree-shakable package`
 
-const usageCode = `import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
+const usageCode = `import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
 
 const employees = [
   { id: 1, name: 'Alice', role: 'Engineer', salary: 135000 },

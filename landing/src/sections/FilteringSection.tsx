@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useGridContext } from 'reactzero-lattice/react/hooks'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useGridContext } from '@reactzero/lattice/react/hooks'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
 import { employees, type Employee } from '../data/sampleData'
 import { ExampleCard } from '../components/ExampleCard'
 
 const departments = ['Engineering', 'Design', 'Marketing', 'Sales']
 const statuses = ['active', 'inactive', 'on-leave']
 
-const code = `import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
+const code = `import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
 
 const plugins = [filterPlugin<Employee>({ debounce: 150 })]
 
@@ -134,7 +134,7 @@ export function FilteringSection() {
   return (
     <section className="section" id="filtering">
       <div className="container">
-        <div className="section-label">Plugin · reactzero-lattice/filter</div>
+        <div className="section-label">Plugin · @reactzero/lattice/filter</div>
         <h2 className="section-title">Filter globally or per column</h2>
         <p className="section-desc">
           One plugin, two patterns. A global search bar runs a debounced fuzzy match across every column,

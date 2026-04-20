@@ -11,7 +11,7 @@ export function FooterSection() {
             <a href="https://github.com/motiondesignlv/ReactZero-Lattice" target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a href="https://www.npmjs.com/package/reactzero-lattice" target="_blank" rel="noreferrer">
+            <a href="https://www.npmjs.com/package/@reactzero/lattice" target="_blank" rel="noreferrer">
               npm
             </a>
           </div>

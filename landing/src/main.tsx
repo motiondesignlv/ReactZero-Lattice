@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
-import 'reactzero-lattice/styles/a11y.css'
+import '@reactzero/lattice/styles/a11y.css'
 import './grid-styles.css'
 import './global.css'
 

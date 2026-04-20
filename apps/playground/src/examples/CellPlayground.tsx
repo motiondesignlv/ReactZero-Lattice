@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
 import { products, type Product } from '../data'
 import { ExampleSection } from '../components/ExampleSection'
 

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useLiveRegion } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useLiveRegion } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 import { employees, type Employee } from '../data/sampleData'
 import { ExampleCard } from '../components/ExampleCard'
 
@@ -31,7 +31,7 @@ const features = [
   {
     icon: '◉',
     title: '24px target sizes',
-    desc: 'Opt-in reactzero-lattice/styles/a11y.css ships minimum 24×24 CSS-pixel touch targets on sort toggles, filter clears, expand buttons, and page controls. Visible :focus-visible rings on every cell and control.',
+    desc: 'Opt-in @reactzero/lattice/styles/a11y.css ships minimum 24×24 CSS-pixel touch targets on sort toggles, filter clears, expand buttons, and page controls. Visible :focus-visible rings on every cell and control.',
   },
   {
     icon: '✓',
@@ -54,12 +54,12 @@ const complianceCriteria: { sc: string; name: string; how: string }[] = [
   { sc: '4.1.3', name: 'Status Messages', how: 'Built-in polite + assertive live regions, debounced to avoid spamming screen readers' },
 ]
 
-const code = `import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
-import 'reactzero-lattice/styles/a11y.css' // opt-in: target sizes + focus rings
+const code = `import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
+import '@reactzero/lattice/styles/a11y.css' // opt-in: target sizes + focus rings
 
 const plugins = [
   sortPlugin<Employee>({ multiSort: true }),

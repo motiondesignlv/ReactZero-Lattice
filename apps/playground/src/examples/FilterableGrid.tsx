@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useGridContext } from 'reactzero-lattice/react/hooks'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useGridContext } from '@reactzero/lattice/react/hooks'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
 import { employees, type Employee } from '../data'
 import { ExampleSection } from '../components/ExampleSection'
 

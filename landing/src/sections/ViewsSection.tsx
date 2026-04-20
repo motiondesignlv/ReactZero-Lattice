@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
 import { employees, type Employee } from '../data/sampleData'
 
 type Mode = 'table' | 'cards' | 'carousel'

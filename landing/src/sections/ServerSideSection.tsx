@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
-import type { SortState } from 'reactzero-lattice/core/types'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
+import type { SortState } from '@reactzero/lattice/core/types'
 import { generateLargeDataset, type Employee } from '../data/sampleData'
 import { ExampleCard } from '../components/ExampleCard'
 
@@ -68,9 +68,9 @@ function runFakeBackend(q: QueryState, signal: AbortSignal): Promise<QueryResult
   })
 }
 
-const code = `import { sortPlugin } from 'reactzero-lattice/sort'
-import { filterPlugin } from 'reactzero-lattice/filter'
-import { paginatePlugin } from 'reactzero-lattice/paginate'
+const code = `import { sortPlugin } from '@reactzero/lattice/sort'
+import { filterPlugin } from '@reactzero/lattice/filter'
+import { paginatePlugin } from '@reactzero/lattice/paginate'
 
 function ServerGrid() {
   const [query, setQuery] = useState({ sort: [], globalFilter: '', columnFilters: {}, page: 0, pageSize: 10 })

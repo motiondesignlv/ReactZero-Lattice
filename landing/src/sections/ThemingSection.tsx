@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
 import { employees, type Employee } from '../data/sampleData'
 import { CodeBlock } from '../components/CodeBlock'
 
@@ -489,7 +489,7 @@ export function ThemingSection() {
         <div className="section-label">Theming · Zero dependencies · Headless</div>
         <h2 className="section-title">The same component, nine completely different tables</h2>
         <p className="section-desc">
-          Lattice ships <strong>no visual CSS at all</strong>. The engine in <code>reactzero-lattice/core</code> has
+          Lattice ships <strong>no visual CSS at all</strong>. The engine in <code>@reactzero/lattice/core</code> has
           zero runtime dependencies and zero styles — it just emits <code>data-lattice-*</code> attributes and
           composable primitives. Everything below renders from identical JSX and the same sort plugin. The
           only thing that changes when you click a theme is a CSS class on the wrapper. Hit{' '}

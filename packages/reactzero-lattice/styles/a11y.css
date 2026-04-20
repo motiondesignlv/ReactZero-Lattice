@@ -1,8 +1,8 @@
-/* reactzero-lattice/styles/a11y.css
+/* @reactzero/lattice/styles/a11y.css
  *
  * Opt-in accessibility baseline for Lattice grids. Import once at the app root:
  *
- *   import 'reactzero-lattice/styles/a11y.css'
+ *   import '@reactzero/lattice/styles/a11y.css'
  *
  * Covers:
  *   - WCAG 2.2 SC 2.5.8 Target Size (Minimum) — 24x24 CSS pixels on library controls

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
 import { employees, type Employee } from '../data'
 import { ExampleSection } from '../components/ExampleSection'
 

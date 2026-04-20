@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 import { generateLargeDataset, type Employee } from '../data'
 import { ExampleSection } from '../components/ExampleSection'
 

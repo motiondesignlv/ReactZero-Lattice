@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
 import { employees, type Employee } from '../data/sampleData'
 import { ExampleCard } from '../components/ExampleCard'
 
-const code = `import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
+const code = `import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
 
 const plugins = [sortPlugin<Employee>({ multiSort: true })]
 
@@ -59,7 +59,7 @@ export function SortingSection() {
   return (
     <section className="section" id="sorting">
       <div className="container">
-        <div className="section-label">Plugin · reactzero-lattice/sort</div>
+        <div className="section-label">Plugin · @reactzero/lattice/sort</div>
         <h2 className="section-title">Sort by any column, any direction</h2>
         <p className="section-desc">
           A tiny plugin that adds column sorting with ascending / descending / unsorted cycling.

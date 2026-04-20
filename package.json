@@ -1,7 +1,7 @@
 {
-  "name": "reactzero-lattice",
+  "name": "reactzero-lattice-monorepo",
   "private": true,
-  "description": "ReactZero Lattice — a cell-first React data grid. Monorepo root.",
+  "description": "ReactZero Lattice monorepo — not published. The publishable library lives in packages/reactzero-lattice.",
   "author": {
     "name": "Luis Vargas",
     "url": "https://themotiondesign.com"
@@ -31,6 +31,9 @@
     "size:dist": "node scripts/size-dist.mjs",
     "landing": "npm run dev --workspace landing",
     "landing:build": "npm run build --workspace landing",
+    "publish:lib": "npm publish --workspace @reactzero/lattice",
+    "publish:lib:dry": "npm publish --workspace @reactzero/lattice --dry-run",
+    "prepublishOnly": "echo 'Run \"npm run publish:lib\" (or cd packages/reactzero-lattice && npm publish). The root is private on purpose.' && exit 1",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "changeset publish"

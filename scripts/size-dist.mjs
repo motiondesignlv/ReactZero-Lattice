@@ -4,15 +4,15 @@ import { gzipSync } from 'node:zlib'
 
 const root = process.cwd()
 
-const distDir = path.join(root, 'packages', 'reactzero-lattice', 'dist')
+const distDir = path.join(root, 'packages', '@reactzero/lattice', 'dist')
 
 const targets = [
-  ['reactzero-lattice', ['index.js']],
-  ['reactzero-lattice/core', ['core/index.js', 'core/engine.js', 'core/types.js', 'core/utils.js']],
-  ['reactzero-lattice/react', ['react/index.js', 'react/components.js', 'react/hooks.js', 'react/utils.js']],
-  ['reactzero-lattice/filter', ['filter.js']],
-  ['reactzero-lattice/sort', ['sort.js']],
-  ['reactzero-lattice/paginate', ['paginate.js']],
+  ['@reactzero/lattice', ['index.js']],
+  ['@reactzero/lattice/core', ['core/index.js', 'core/engine.js', 'core/types.js', 'core/utils.js']],
+  ['@reactzero/lattice/react', ['react/index.js', 'react/components.js', 'react/hooks.js', 'react/utils.js']],
+  ['@reactzero/lattice/filter', ['filter.js']],
+  ['@reactzero/lattice/sort', ['sort.js']],
+  ['@reactzero/lattice/paginate', ['paginate.js']],
 ]
 
 function formatBytes(bytes) {

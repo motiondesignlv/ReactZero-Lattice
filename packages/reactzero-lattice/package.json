@@ -1,5 +1,5 @@
 {
-  "name": "reactzero-lattice",
+  "name": "@reactzero/lattice",
   "version": "0.1.0",
   "description": "ReactZero Lattice — a cell-first React data grid with zero-dep core and opt-in sort/filter/paginate plugins, all tree-shakable from one package.",
   "keywords": [

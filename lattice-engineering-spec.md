@@ -1,5 +1,5 @@
 # Lattice — Engineering Specification
-### `reactzero-lattice/react` · Complete Build Reference
+### `@reactzero/lattice/react` · Complete Build Reference
 
 > This document is the single source of truth for building Lattice.
 > Every section maps to real implementation decisions, TypeScript patterns,
@@ -77,7 +77,7 @@ and maps directly to how CSS Grid / Flexbox layouts are thought about.
 - Data fetching (use TanStack Query, SWR, etc.)
 - Form editing within cells (consumer handles)
 - Column resizing drag handles (opt-in via future plugin)
-- Virtualisation in core (opt-in via `reactzero-lattice/virtual` plugin)
+- Virtualisation in core (opt-in via `@reactzero/lattice/virtual` plugin)
 
 ---
 
@@ -127,7 +127,7 @@ lattice/
 │   └── config.json
 │
 ├── packages/
-│   ├── core/                      # reactzero-lattice/core — zero React, pure TS
+│   ├── core/                      # @reactzero/lattice/core — zero React, pure TS
 │   │   ├── src/
 │   │   │   ├── engine.ts          # pipeline: sort → filter → paginate
 │   │   │   ├── types.ts           # ALL shared types live here
@@ -139,7 +139,7 @@ lattice/
 │   │   ├── package.json
 │   │   └── tsconfig.json
 │   │
-│   ├── react/                     # reactzero-lattice/react — React bindings
+│   ├── react/                     # @reactzero/lattice/react — React bindings
 │   │   ├── src/
 │   │   │   ├── components/
 │   │   │   │   ├── Grid.tsx
@@ -159,7 +159,7 @@ lattice/
 │   │   ├── package.json
 │   │   └── tsconfig.json
 │   │
-│   ├── sort/                      # reactzero-lattice/sort
+│   ├── sort/                      # @reactzero/lattice/sort
 │   │   ├── src/
 │   │   │   ├── plugin.ts          # sortPlugin factory
 │   │   │   ├── SortHeader.tsx     # optional pre-built sort header cell
@@ -167,7 +167,7 @@ lattice/
 │   │   │   └── index.ts
 │   │   └── package.json
 │   │
-│   ├── filter/                    # reactzero-lattice/filter
+│   ├── filter/                    # @reactzero/lattice/filter
 │   │   ├── src/
 │   │   │   ├── plugin.ts
 │   │   │   ├── FilterInput.tsx    # optional pre-built filter input
@@ -175,7 +175,7 @@ lattice/
 │   │   │   └── index.ts
 │   │   └── package.json
 │   │
-│   ├── paginate/                  # reactzero-lattice/paginate
+│   ├── paginate/                  # @reactzero/lattice/paginate
 │   │   ├── src/
 │   │   │   ├── plugin.ts
 │   │   │   ├── components/
@@ -186,12 +186,12 @@ lattice/
 │   │   │   └── index.ts
 │   │   └── package.json
 │   │
-│   ├── select/                    # reactzero-lattice/select
-│   ├── expand/                    # reactzero-lattice/expand
-│   ├── group/                     # reactzero-lattice/group (v2)
-│   ├── virtual/                   # reactzero-lattice/virtual (v2)
+│   ├── select/                    # @reactzero/lattice/select
+│   ├── expand/                    # @reactzero/lattice/expand
+│   ├── group/                     # @reactzero/lattice/group (v2)
+│   ├── virtual/                   # @reactzero/lattice/virtual (v2)
 │   │
-│   └── devtools/                  # reactzero-lattice/devtools
+│   └── devtools/                  # @reactzero/lattice/devtools
 │       ├── src/
 │       │   ├── DevtoolsPanel.tsx
 │       │   ├── panels/
@@ -219,7 +219,7 @@ Every package follows the same shape. This is critical for tree-shaking and dual
 
 ```json
 {
-  "name": "reactzero-lattice/react",
+  "name": "@reactzero/lattice/react",
   "version": "0.1.0",
   "description": "Composable grid engine for React",
   "type": "module",
@@ -240,7 +240,7 @@ Every package follows the same shape. This is critical for tree-shaking and dual
     "react-dom": ">=18.0.0"
   },
   "devDependencies": {
-    "reactzero-lattice/core": "workspace:*",
+    "@reactzero/lattice/core": "workspace:*",
     "react":         "^19.0.0",
     "react-dom":     "^19.0.0",
     "typescript":    "^6.0.0",
@@ -270,7 +270,7 @@ export default defineConfig({
   sourcemap:  true,
   clean:      true,
   treeshake:  true,
-  external:   ['react', 'react-dom', 'reactzero-lattice/core'],
+  external:   ['react', 'react-dom', '@reactzero/lattice/core'],
   esbuildOptions(options) {
     options.jsx = 'automatic'  // React 17+ JSX transform
   }
@@ -413,7 +413,7 @@ export type ColumnDef<TData, TValue = TData[keyof TData]> = {
 // packages/core/src/types.ts
 export interface ColumnMeta {}
 // In consumer code:
-// declare module 'reactzero-lattice/core' {
+// declare module '@reactzero/lattice/core' {
 //   interface ColumnMeta { align?: 'left' | 'right' | 'center' }
 // }
 ```
@@ -810,14 +810,14 @@ function gridReducer<TData>(
 import { useReducer, useMemo, useCallback, type ReactNode } from 'react'
 import { GridContext }    from '../context'
 import { gridReducer }    from '../hooks/useGridReducer'
-import { runPipeline }    from 'reactzero-lattice/core'
+import { runPipeline }    from '@reactzero/lattice/core'
 import { initialGridState } from '../utils/state'
 import type {
   ColumnDef,
   GridProps,
   LatticePlugin,
   RowKey,
-} from 'reactzero-lattice/core'
+} from '@reactzero/lattice/core'
 
 function Grid<TData>({
   data,
@@ -937,7 +937,7 @@ export { Grid }
 
 import { useContext, type ReactNode, type CSSProperties } from 'react'
 import { GridContext } from '../context'
-import type { RowClassFn, RowStyleFn, GridInstance } from 'reactzero-lattice/core'
+import type { RowClassFn, RowStyleFn, GridInstance } from '@reactzero/lattice/core'
 
 type RowProps<TData> = {
   children:   ReactNode
@@ -1038,7 +1038,7 @@ function Body<TData>({ children }: { children: ReactNode }) {
 // packages/react/src/components/Cell.tsx
 
 import { useGridContext } from '../hooks/useGridContext'
-import type { CellType, ColumnKey, CellContext } from 'reactzero-lattice/core'
+import type { CellType, ColumnKey, CellContext } from '@reactzero/lattice/core'
 
 type CellProps<TData> = {
   type?:       CellType  // 'data' | 'action' | 'header' | 'divider' | 'skeleton' | 'custom'
@@ -1144,7 +1144,7 @@ function Cell<TData>({
 // packages/react/src/context.tsx
 
 import { createContext, useContext } from 'react'
-import type { GridInstance } from 'reactzero-lattice/core'
+import type { GridInstance } from '@reactzero/lattice/core'
 
 // We store GridInstance<unknown> in context and re-cast at the hook level.
 // This avoids the impossible "GridInstance<TData>" generic in createContext.
@@ -1186,7 +1186,7 @@ For teams that want 100% markup control with no JSX components:
 
 import { useReducer, useMemo, useCallback } from 'react'
 import { gridReducer } from './useGridReducer'
-import { runPipeline, initialGridState } from 'reactzero-lattice/core'
+import { runPipeline, initialGridState } from '@reactzero/lattice/core'
 
 type UseGridOptions<TData> = {
   data:      TData[]
@@ -1281,7 +1281,7 @@ import type {
   SortDirection,
   SortState,
   SortFn,
-} from 'reactzero-lattice/core'
+} from '@reactzero/lattice/core'
 
 type SortPluginOptions<TData> = {
   defaultSort?:    SortState<TData>
@@ -1560,14 +1560,14 @@ export function paginatePlugin<TData>(
 }
 ```
 
-### 9.5 Pre-built Pagination UI components (ship with reactzero-lattice/paginate)
+### 9.5 Pre-built Pagination UI components (ship with @reactzero/lattice/paginate)
 
 ```tsx
 // packages/paginate/src/components/ArrowPagination.tsx
 // Headless-style: no CSS shipped, uses data-* attributes for consumer styling
 
-import { useGridContext } from 'reactzero-lattice/react'
-import { usePlugin }      from 'reactzero-lattice/react'
+import { useGridContext } from '@reactzero/lattice/react'
+import { usePlugin }      from '@reactzero/lattice/react'
 
 type ArrowPaginationProps = {
   showTotal?:    boolean
@@ -1716,7 +1716,7 @@ DevTools:
 This ships as an opt-in starting point, not a default:
 
 ```css
-/* reactzero-lattice/react/themes/minimal.css */
+/* @reactzero/lattice/react/themes/minimal.css */
 /* Complete reference theme — override any variable */
 
 :root {
@@ -2097,13 +2097,13 @@ production builds when tree-shaken:
 
 // IMPORTANT: DevTools should only be imported in development.
 // Usage:
-//   import { LatticeDevTools } from 'reactzero-lattice/devtools'
+//   import { LatticeDevTools } from '@reactzero/lattice/devtools'
 //   Only add this component when process.env.NODE_ENV !== 'production'
 
 // The component is ~50kb — do NOT include in production bundles.
 // Recommended pattern:
 if (process.env.NODE_ENV === 'development') {
-  const { LatticeDevTools } = await import('reactzero-lattice/devtools')
+  const { LatticeDevTools } = await import('@reactzero/lattice/devtools')
 }
 ```
 
@@ -2486,7 +2486,7 @@ export function CardGridExample() {
       aria-label="Product catalog"
     >
       {/* Filter input — consumer renders this wherever they want */}
-      <FilterInput />  {/* from reactzero-lattice/filter */}
+      <FilterInput />  {/* from @reactzero/lattice/filter */}
 
       <Grid.Body>
         {/*
@@ -2585,7 +2585,7 @@ export default function HomePage() {
 
       {/* 4. Install block */}
       <section id="install">
-        <CodeBlock language="bash" code="npm install reactzero-lattice/react" />
+        <CodeBlock language="bash" code="npm install @reactzero/lattice/react" />
       </section>
 
       {/* 5. Quick start — full runnable example */}
@@ -2707,7 +2707,7 @@ export default config
 
 import type { Meta, StoryObj } from '@storybook/react'
 import { Grid, Row, Cell } from './Grid'
-import { sortPlugin } from 'reactzero-lattice/sort'
+import { sortPlugin } from '@reactzero/lattice/sort'
 import { within, userEvent } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 
@@ -2962,7 +2962,7 @@ describe('runPipeline', () => {
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Grid, Row, Cell } from './Grid'
-import { sortPlugin } from 'reactzero-lattice/sort'
+import { sortPlugin } from '@reactzero/lattice/sort'
 
 const users = [
   { id: 1, name: 'Zara' },
@@ -3113,7 +3113,7 @@ npx changeset version
 npx changeset publish --tag canary
 
 # Users install with:
-npm install reactzero-lattice/react@canary
+npm install @reactzero/lattice/react@canary
 ```
 
 ### 19.4 Version strategy
@@ -3121,14 +3121,14 @@ npm install reactzero-lattice/react@canary
 - `0.x.x` — pre-stable, breaking changes allowed between minor versions
 - `1.0.0` — stable, semantic versioning strictly followed
 - Plugin packages follow the core package's major version
-- Peer dependency on `reactzero-lattice/core` uses `^` for minor, `~` for patch
+- Peer dependency on `@reactzero/lattice/core` uses `^` for minor, `~` for patch
 
 ```json
 // packages/sort/package.json
 {
   "peerDependencies": {
-    "reactzero-lattice/react": "^0.1.0",
-    "reactzero-lattice/core":  "^0.1.0"
+    "@reactzero/lattice/react": "^0.1.0",
+    "@reactzero/lattice/core":  "^0.1.0"
   }
 }
 ```
@@ -3170,4 +3170,4 @@ When building from scratch, follow this order to avoid dependency issues:
 ---
 
 *Engineering Spec v0.1 — March 2026*
-*Build reference for reactzero-lattice/react*
+*Build reference for @reactzero/lattice/react*

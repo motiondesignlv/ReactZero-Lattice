@@ -1,8 +1,8 @@
-# reactzero-lattice
+# @reactzero/lattice
 
-[![npm version](https://img.shields.io/npm/v/reactzero-lattice)](https://www.npmjs.com/package/reactzero-lattice)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/reactzero-lattice)](https://bundlephobia.com/package/reactzero-lattice)
-[![license](https://img.shields.io/npm/l/reactzero-lattice)](https://github.com/motiondesignlv/ReactZero-Lattice/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@reactzero/lattice)](https://www.npmjs.com/package/@reactzero/lattice)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@reactzero/lattice)](https://bundlephobia.com/package/@reactzero/lattice)
+[![license](https://img.shields.io/npm/l/@reactzero/lattice)](https://github.com/motiondesignlv/ReactZero-Lattice/blob/main/LICENSE)
 [![CI](https://github.com/motiondesignlv/ReactZero-Lattice/actions/workflows/ci.yml/badge.svg)](https://github.com/motiondesignlv/ReactZero-Lattice/actions/workflows/ci.yml)
 
 ![Lattice — cell-first data grid for React](./lattice.jpg)
@@ -11,7 +11,7 @@ Zero-dependency, cell-first data grid engine for React. Compose your table the w
 
 Part of the **React Zero** family — a set of small, opinionated React libraries with zero runtime dependencies: [@reactzero/flow](https://github.com/motiondesignlv/ReactZero-flow), [@reactzero/datepicker](https://github.com/motiondesignlv/ReactZero-DatePicker), and now **lattice**.
 
-## Why reactzero-lattice?
+## Why @reactzero/lattice?
 
 - **Cell-first, not column-first** — you declare one `<Row>` template with typed `<Cell>` children, and the engine loops it over your data. No column config objects, no `cell: ({ row }) => ...` render callbacks.
 - **Zero runtime dependencies** — core engine is pure TypeScript; React is the only peer dep (18+).
@@ -53,25 +53,25 @@ Part of the **React Zero** family — a set of small, opinionated React librarie
 
 ## Package and subpaths
 
-Everything ships in a single tree-shakable package: `reactzero-lattice`. Consumers pull the pieces they need via subpath imports — modern bundlers (Vite, esbuild, Rollup, Webpack 5) drop unused code automatically.
+Everything ships in a single tree-shakable package: `@reactzero/lattice`. Consumers pull the pieces they need via subpath imports — modern bundlers (Vite, esbuild, Rollup, Webpack 5) drop unused code automatically.
 
 | Subpath | Purpose | Size (gzip, approx) |
 |---------|---------|---------------------|
-| `reactzero-lattice/core` | Pipeline engine, types, utilities. Zero React. | ~2 kB |
-| `reactzero-lattice/react` | React bindings: `Grid`, `Row`, `Cell`, `useGrid` | ~4 kB |
-| `reactzero-lattice/sort` | Single + multi-column sort plugin | ~1 kB |
-| `reactzero-lattice/filter` | Global + per-column filter plugin (debounced) | ~1 kB |
-| `reactzero-lattice/paginate` | Client-side pagination plugin | ~1 kB |
-| `reactzero-lattice/styles/a11y.css` | Opt-in accessibility baseline stylesheet | — |
+| `@reactzero/lattice/core` | Pipeline engine, types, utilities. Zero React. | ~2 kB |
+| `@reactzero/lattice/react` | React bindings: `Grid`, `Row`, `Cell`, `useGrid` | ~4 kB |
+| `@reactzero/lattice/sort` | Single + multi-column sort plugin | ~1 kB |
+| `@reactzero/lattice/filter` | Global + per-column filter plugin (debounced) | ~1 kB |
+| `@reactzero/lattice/paginate` | Client-side pagination plugin | ~1 kB |
+| `@reactzero/lattice/styles/a11y.css` | Opt-in accessibility baseline stylesheet | — |
 
 ## Quick Start
 
 ```bash
-npm install reactzero-lattice
+npm install @reactzero/lattice
 ```
 
 ```tsx
-import { Grid, Row, Cell, Header, Body } from "reactzero-lattice/react";
+import { Grid, Row, Cell, Header, Body } from "@reactzero/lattice/react";
 
 type User = { id: string; name: string; email: string; role: string };
 
@@ -130,10 +130,10 @@ A plugin is an object with an `id`, an `initialState`, an `init()` that returns 
 Plugins are an array. Order is the pipeline order.
 
 ```tsx
-import { useGrid, Grid, Row, Cell, Header, Body } from "reactzero-lattice/react";
-import { sortPlugin } from "reactzero-lattice/sort";
-import { filterPlugin } from "reactzero-lattice/filter";
-import { paginatePlugin } from "reactzero-lattice/paginate";
+import { useGrid, Grid, Row, Cell, Header, Body } from "@reactzero/lattice/react";
+import { sortPlugin } from "@reactzero/lattice/sort";
+import { filterPlugin } from "@reactzero/lattice/filter";
+import { paginatePlugin } from "@reactzero/lattice/paginate";
 
 export function Users({ data }: { data: User[] }) {
   const grid = useGrid({
@@ -179,7 +179,7 @@ Each plugin returns a typed API via `grid.plugin(id)`:
 ### Writing your own plugin
 
 ```ts
-import type { LatticePlugin } from "reactzero-lattice/core/types";
+import type { LatticePlugin } from "@reactzero/lattice/core/types";
 
 export function highlightPlugin<TData>(): LatticePlugin<TData, { flash: (id: string) => void }> {
   return {
@@ -204,44 +204,44 @@ Lattice is designed so the dead-code eliminator in every modern bundler (esbuild
 The whole library ships in one package, so there's a single install:
 
 ```bash
-npm install reactzero-lattice
+npm install @reactzero/lattice
 ```
 
 Then pull only the pieces you use via subpath imports — everything else is dropped at bundle time:
 
 ```tsx
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { sortPlugin } from 'reactzero-lattice/sort'       // include only if you sort
-import { filterPlugin } from 'reactzero-lattice/filter'   // include only if you filter
-import { paginatePlugin } from 'reactzero-lattice/paginate' // include only if you paginate
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { sortPlugin } from '@reactzero/lattice/sort'       // include only if you sort
+import { filterPlugin } from '@reactzero/lattice/filter'   // include only if you filter
+import { paginatePlugin } from '@reactzero/lattice/paginate' // include only if you paginate
 ```
 
 ### 2. Use named imports — never `import *`
 
 ```tsx
 // Good — bundler drops what you don't reference
-import { Grid, Row, Cell } from "reactzero-lattice/react";
+import { Grid, Row, Cell } from "@reactzero/lattice/react";
 
 // Bad — forces the entire barrel into the graph
-import * as Lattice from "reactzero-lattice/react";
+import * as Lattice from "@reactzero/lattice/react";
 ```
 
 ### 3. Import from subpath exports when you only need a slice
 
-Both `reactzero-lattice/core` and `reactzero-lattice/react` expose subpath exports so you can skip the barrel entirely when it helps:
+Both `@reactzero/lattice/core` and `@reactzero/lattice/react` expose subpath exports so you can skip the barrel entirely when it helps:
 
 ```ts
 // Only the pipeline engine, no React
-import { runPipeline } from "reactzero-lattice/core/engine";
+import { runPipeline } from "@reactzero/lattice/core/engine";
 
 // Only types — zero runtime cost
-import type { LatticePlugin, ColumnKey } from "reactzero-lattice/core/types";
+import type { LatticePlugin, ColumnKey } from "@reactzero/lattice/core/types";
 
 // Only hooks, no components
-import { useGrid } from "reactzero-lattice/react/hooks";
+import { useGrid } from "@reactzero/lattice/react/hooks";
 
 // Only components, no hooks
-import { Grid, Row, Cell } from "reactzero-lattice/react/components";
+import { Grid, Row, Cell } from "@reactzero/lattice/react/components";
 ```
 
 ### 4. Every package declares `"sideEffects": false`
@@ -250,7 +250,7 @@ This tells the bundler it is safe to drop any import whose result is unused. You
 
 ### 5. No CSS side effects to worry about
 
-Lattice ships zero CSS. There is no `import "reactzero-lattice/react/style.css"` that would silently defeat tree-shaking by pulling in a side-effectful module. Your styles are yours.
+Lattice ships zero CSS. There is no `import "@reactzero/lattice/react/style.css"` that would silently defeat tree-shaking by pulling in a side-effectful module. Your styles are yours.
 
 ### What a minimal bundle looks like
 
@@ -258,8 +258,8 @@ A page that uses only the base grid — no sort, no filter, no paginate — pull
 
 | What you import | Approx gzip |
 |-----------------|-------------|
-| `reactzero-lattice/core` (engine + types) | ~2 kB |
-| `reactzero-lattice/react` (Grid, Row, Cell, Body, Header) | ~4 kB |
+| `@reactzero/lattice/core` (engine + types) | ~2 kB |
+| `@reactzero/lattice/react` (Grid, Row, Cell, Body, Header) | ~4 kB |
 | **Total** | **~6 kB** |
 
 Adding a plugin is strictly additive — the base does not grow.
@@ -269,8 +269,8 @@ Adding a plugin is strictly additive — the base does not grow.
 Prefer full control? Skip the components and drive the UI yourself.
 
 ```tsx
-import { useGrid } from "reactzero-lattice/react";
-import { sortPlugin } from "reactzero-lattice/sort";
+import { useGrid } from "@reactzero/lattice/react";
+import { sortPlugin } from "@reactzero/lattice/sort";
 
 function HeadlessTable({ data }: { data: User[] }) {
   const grid = useGrid({
@@ -349,11 +349,11 @@ React 18+ required.
 ```
 lattice/
 ├── packages/
-│   ├── core/         # reactzero-lattice/core        — engine, types, utils
-│   ├── react/        # reactzero-lattice/react       — Grid, Row, Cell, useGrid
-│   ├── sort/         # reactzero-lattice/sort        — sort plugin
-│   ├── filter/       # reactzero-lattice/filter      — filter plugin
-│   └── paginate/     # reactzero-lattice/paginate    — paginate plugin
+│   ├── core/         # @reactzero/lattice/core        — engine, types, utils
+│   ├── react/        # @reactzero/lattice/react       — Grid, Row, Cell, useGrid
+│   ├── sort/         # @reactzero/lattice/sort        — sort plugin
+│   ├── filter/       # @reactzero/lattice/filter      — filter plugin
+│   └── paginate/     # @reactzero/lattice/paginate    — paginate plugin
 ├── apps/
 │   └── playground/   # Vite + React dev playground
 └── landing/          # Docs site

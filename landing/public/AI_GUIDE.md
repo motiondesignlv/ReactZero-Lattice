@@ -1,9 +1,9 @@
 # Lattice — AI Implementation Guide
 
 > **Audience:** LLM coding assistants (Claude, ChatGPT, Copilot, Cursor, etc.).
-> **Goal:** Give the assistant everything it needs to correctly scaffold, extend, and debug any table built on `reactzero-lattice/react` — **without guessing APIs or inventing props**.
+> **Goal:** Give the assistant everything it needs to correctly scaffold, extend, and debug any table built on `@reactzero/lattice/react` — **without guessing APIs or inventing props**.
 > **Version:** Lattice `0.1.0` · React 18+ / 19.
-> **Zero third-party runtime dependencies.** `reactzero-lattice/core` has none. `reactzero-lattice/react` peers on React and nothing else — no lodash, no date-fns, no utility libraries.
+> **Zero third-party runtime dependencies.** `@reactzero/lattice/core` has none. `@reactzero/lattice/react` peers on React and nothing else — no lodash, no date-fns, no utility libraries.
 > **Covers:** cell-first composition, plugin pipeline, WAI-ARIA grid keyboard navigation, live-region announcements, sticky/pinned columns, server-side (manual) mode, and headless rendering.
 
 This document is self-contained. Read it top-to-bottom before emitting code. When in doubt, follow the **RULES** block at the end.
@@ -46,47 +46,47 @@ Three rules you must never break:
 
 ## 2. Package and subpaths
 
-Everything ships in a single tree-shakable npm package called **`reactzero-lattice`**. Consumers pick what they need via subpath imports — unused code is dropped at bundle time (ESM + `sideEffects: false`).
+Everything ships in a single tree-shakable npm package called **`@reactzero/lattice`**. Consumers pick what they need via subpath imports — unused code is dropped at bundle time (ESM + `sideEffects: false`).
 
 | Subpath                         | Purpose                                                           |
 |---------------------------------|-------------------------------------------------------------------|
-| `reactzero-lattice/core`        | Framework-agnostic engine: types, reducer, pipeline. Zero deps.   |
-| `reactzero-lattice/react`       | React bindings: `<Grid>`, `<Row>`, `<Cell>`, hooks, context.      |
-| `reactzero-lattice/sort`        | Sort plugin (`sortPlugin`, `SortPluginAPI`)                       |
-| `reactzero-lattice/filter`      | Filter plugin — global + per-column, debounced                    |
-| `reactzero-lattice/paginate`    | Pagination plugin                                                 |
-| `reactzero-lattice/styles/a11y.css` | Opt-in accessibility baseline stylesheet                      |
+| `@reactzero/lattice/core`        | Framework-agnostic engine: types, reducer, pipeline. Zero deps.   |
+| `@reactzero/lattice/react`       | React bindings: `<Grid>`, `<Row>`, `<Cell>`, hooks, context.      |
+| `@reactzero/lattice/sort`        | Sort plugin (`sortPlugin`, `SortPluginAPI`)                       |
+| `@reactzero/lattice/filter`      | Filter plugin — global + per-column, debounced                    |
+| `@reactzero/lattice/paginate`    | Pagination plugin                                                 |
+| `@reactzero/lattice/styles/a11y.css` | Opt-in accessibility baseline stylesheet                      |
 
 Peer deps: `react >= 18`, `react-dom >= 18`.
 
 **Install:**
 
 ```bash
-npm install reactzero-lattice
+npm install @reactzero/lattice
 ```
 
 **Import paths you MUST use** (these are the real entrypoints — do not guess):
 
 ```ts
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useGridContext, useRowContext } from 'reactzero-lattice/react/hooks'
-import { buildGridTemplate } from 'reactzero-lattice/react/utils'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useGridContext, useRowContext } from '@reactzero/lattice/react/hooks'
+import { buildGridTemplate } from '@reactzero/lattice/react/utils'
 
-import type { ColumnDef, GridInstance, CellContext } from 'reactzero-lattice/core/types'
+import type { ColumnDef, GridInstance, CellContext } from '@reactzero/lattice/core/types'
 
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 ```
 
-> **Do not** import from `reactzero-lattice/react` root (`import { Grid } from 'reactzero-lattice/react'`) unless you need a re-export — always prefer the subpath entrypoints above. This keeps bundles lean and matches the official examples.
+> **Do not** import from `@reactzero/lattice/react` root (`import { Grid } from '@reactzero/lattice/react'`) unless you need a re-export — always prefer the subpath entrypoints above. This keeps bundles lean and matches the official examples.
 
 ---
 
 ## 3. Minimal Table (60-second hello world)
 
 ```tsx
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
 
 type Employee = { id: number; name: string; role: string; salary: number }
 
@@ -299,7 +299,7 @@ type ColumnDef<TData, TValue = unknown> = {
 Use `buildGridTemplate(columns)` to turn a `ColumnDef[]` into a `grid-template-columns` value:
 
 ```ts
-import { buildGridTemplate } from 'reactzero-lattice/react/utils'
+import { buildGridTemplate } from '@reactzero/lattice/react/utils'
 
 const columns: ColumnDef<Employee>[] = [
   { key: 'name', width: 240 },
@@ -342,7 +342,7 @@ function SortHeader({ columnKey, label }: { columnKey: keyof Employee & string; 
 }
 ```
 
-### 6.1 `sortPlugin` — `reactzero-lattice/sort`
+### 6.1 `sortPlugin` — `@reactzero/lattice/sort`
 
 **Factory:**
 ```ts
@@ -374,7 +374,7 @@ Default comparator handles `number`, `Date`, and strings (with `localeCompare({ 
 
 **Prefer `<Grid.HeaderCell>`** (§4.6) over hand-rolling sortable headers — it calls `getSortHeaderProps` for you. Reach for `getSortHeaderProps` directly only when you need a fully custom header layout.
 
-### 6.2 `filterPlugin` — `reactzero-lattice/filter`
+### 6.2 `filterPlugin` — `@reactzero/lattice/filter`
 
 **Factory:**
 ```ts
@@ -406,7 +406,7 @@ getFilterStatusMessage(): string                           // "Showing 14 of 200
 
 The default match is **case-insensitive `includes`** across stringified values. Override per column with `ColumnDef.filterFn`. All setters debounce; the input `value` returned by the getters mirrors the pending (pre-debounce) value so your input stays responsive to typing.
 
-### 6.3 `paginatePlugin` — `reactzero-lattice/paginate`
+### 6.3 `paginatePlugin` — `@reactzero/lattice/paginate`
 
 **Factory:**
 ```ts
@@ -662,7 +662,7 @@ Lattice bakes a11y into the primitives — you rarely have to add ARIA by hand.
 `<Grid>` auto-wraps in `<LiveRegionProvider>`, and an internal `useLiveAnnouncements` hook announces sort / filter / pagination / selection changes as they happen. To announce your own events from a custom cell or control:
 
 ```tsx
-import { useLiveRegion } from 'reactzero-lattice/react'
+import { useLiveRegion } from '@reactzero/lattice/react'
 
 function ExportButton() {
   const { announce } = useLiveRegion()
@@ -905,7 +905,7 @@ function FooterInfo() {
 If you need to render with `<table>`, a virtual list, or anything else, use `useGrid` to build the instance outside `<Grid>` and then render whatever you want. You still get sort/filter/paginate pipelines for free.
 
 ```tsx
-import { useGrid } from 'reactzero-lattice/react/hooks'
+import { useGrid } from '@reactzero/lattice/react/hooks'
 
 function CustomTable({ data }: { data: Employee[] }) {
   const grid = useGrid({
@@ -941,11 +941,11 @@ function CustomTable({ data }: { data: Employee[] }) {
 
 ```tsx
 import { useMemo } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useGridContext, useRowContext } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useGridContext, useRowContext } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 
 type Employee = {
   id: number; name: string; department: string; role: string
@@ -1073,7 +1073,7 @@ function FooterBar() {
 ## 14. Writing Your Own Plugin
 
 ```ts
-import type { LatticePlugin } from 'reactzero-lattice/core/types'
+import type { LatticePlugin } from '@reactzero/lattice/core/types'
 
 export function highlightPlugin<TData>(): LatticePlugin<TData, { pulse: () => void }> {
   return {

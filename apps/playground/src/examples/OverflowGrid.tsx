@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { buildGridTemplate } from 'reactzero-lattice/react/utils'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { buildGridTemplate } from '@reactzero/lattice/react/utils'
 import { ExampleSection } from '../components/ExampleSection'
-import type { ColumnDef } from 'reactzero-lattice/core/types'
+import type { ColumnDef } from '@reactzero/lattice/core/types'
 
 type Article = {
   id: number
@@ -33,7 +33,7 @@ const columns: ColumnDef<Article>[] = [
 
 const gridTemplate = buildGridTemplate(columns)
 
-const code = `import { buildGridTemplate } from 'reactzero-lattice/react/utils'
+const code = `import { buildGridTemplate } from '@reactzero/lattice/react/utils'
 
 const columns: ColumnDef<Article>[] = [
   { key: 'title', minWidth: 200, maxWidth: 350 },

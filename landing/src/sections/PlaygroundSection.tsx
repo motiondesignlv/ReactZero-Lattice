@@ -1,9 +1,9 @@
 import React, { useMemo, useRef, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin, useGridContext } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin, useGridContext } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 import { generateLargeDataset, type Employee } from '../data/sampleData'
 import { CodeBlock } from '../components/CodeBlock'
 
@@ -195,13 +195,13 @@ function buildCode(opts: {
   if (opts.paginate) pluginList.push(`paginatePlugin<Employee>({ pageSize: ${opts.pageSize} })`)
 
   const imports = [
-    "import { Grid, Row, Cell } from 'reactzero-lattice/react/components'",
+    "import { Grid, Row, Cell } from '@reactzero/lattice/react/components'",
     opts.sort || opts.filter || opts.paginate
-      ? "import { usePlugin } from 'reactzero-lattice/react/hooks'"
+      ? "import { usePlugin } from '@reactzero/lattice/react/hooks'"
       : null,
-    opts.sort ? "import { sortPlugin } from 'reactzero-lattice/sort'" : null,
-    opts.filter ? "import { filterPlugin } from 'reactzero-lattice/filter'" : null,
-    opts.paginate ? "import { paginatePlugin } from 'reactzero-lattice/paginate'" : null,
+    opts.sort ? "import { sortPlugin } from '@reactzero/lattice/sort'" : null,
+    opts.filter ? "import { filterPlugin } from '@reactzero/lattice/filter'" : null,
+    opts.paginate ? "import { paginatePlugin } from '@reactzero/lattice/paginate'" : null,
   ]
     .filter(Boolean)
     .join('\n')

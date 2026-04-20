@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
 import { employees, type Employee } from '../data/sampleData'
 import { CodeBlock } from '../components/CodeBlock'
 

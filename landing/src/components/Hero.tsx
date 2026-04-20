@@ -5,7 +5,7 @@ export function Hero() {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('npm install reactzero-lattice')
+    navigator.clipboard.writeText('npm install @reactzero/lattice')
     setCopied(true)
     setTimeout(() => setCopied(false), 1800)
   }
@@ -29,7 +29,7 @@ export function Hero() {
           </p>
           <div className="hero-install">
             <span className="dollar">$</span>
-            <code>npm install reactzero-lattice</code>
+            <code>npm install @reactzero/lattice</code>
             <button className="copy" onClick={handleCopy}>
               {copied ? 'Copied' : 'Copy'}
             </button>

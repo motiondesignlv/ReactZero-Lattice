@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react'
-import { useGrid } from 'reactzero-lattice/react/hooks'
-import { sortPlugin, type SortPluginAPI } from 'reactzero-lattice/sort'
-import { filterPlugin, type FilterPluginAPI } from 'reactzero-lattice/filter'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { useGrid } from '@reactzero/lattice/react/hooks'
+import { sortPlugin, type SortPluginAPI } from '@reactzero/lattice/sort'
+import { filterPlugin, type FilterPluginAPI } from '@reactzero/lattice/filter'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 import { tasks, type Task } from '../data'
 import { ExampleSection } from '../components/ExampleSection'
 
@@ -31,10 +31,10 @@ const columns = [
 const code = `// HEADLESS: No <Grid>, <Row>, or <Cell> components!
 // Just useGrid() + plugins + plain HTML.
 
-import { useGrid } from 'reactzero-lattice/react/hooks'
-import { sortPlugin } from 'reactzero-lattice/sort'
-import { filterPlugin } from 'reactzero-lattice/filter'
-import { paginatePlugin } from 'reactzero-lattice/paginate'
+import { useGrid } from '@reactzero/lattice/react/hooks'
+import { sortPlugin } from '@reactzero/lattice/sort'
+import { filterPlugin } from '@reactzero/lattice/filter'
+import { paginatePlugin } from '@reactzero/lattice/paginate'
 
 function MyCustomTable() {
   const grid = useGrid<Task>({

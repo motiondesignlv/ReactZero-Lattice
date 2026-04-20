@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
-import { Grid, Row, Cell } from 'reactzero-lattice/react/components'
-import { usePlugin } from 'reactzero-lattice/react/hooks'
-import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+import { Grid, Row, Cell } from '@reactzero/lattice/react/components'
+import { usePlugin } from '@reactzero/lattice/react/hooks'
+import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 import { generateLargeDataset, type Employee } from '../data/sampleData'
 import { ExampleCard } from '../components/ExampleCard'
 
@@ -16,7 +16,7 @@ const VARIANTS: { key: Variant; label: string; hint: string }[] = [
 ]
 
 const CODE_BY_VARIANT: Record<Variant, string> = {
-  numbered: `import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+  numbered: `import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 
 const plugins = [paginatePlugin<Employee>({ pageSize: 10 })]
 
@@ -63,7 +63,7 @@ function NumberedPagination() {
     </div>
   )
 }`,
-  compact: `import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+  compact: `import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 
 const plugins = [paginatePlugin<Employee>({ pageSize: 10 })]
 
@@ -86,7 +86,7 @@ function CompactPagination() {
     </div>
   )
 }`,
-  dropdown: `import { paginatePlugin, type PaginatePluginAPI } from 'reactzero-lattice/paginate'
+  dropdown: `import { paginatePlugin, type PaginatePluginAPI } from '@reactzero/lattice/paginate'
 
 const plugins = [paginatePlugin<Employee>({ pageSize: 10 })]
 
@@ -277,7 +277,7 @@ export function PaginationSection() {
   return (
     <section className="section" id="pagination">
       <div className="container">
-        <div className="section-label">Plugin · reactzero-lattice/paginate</div>
+        <div className="section-label">Plugin · @reactzero/lattice/paginate</div>
         <h2 className="section-title">Pagination that composes with everything</h2>
         <p className="section-desc">
           200 rows, configurable page size, full keyboard-friendly navigation — and it runs downstream of
