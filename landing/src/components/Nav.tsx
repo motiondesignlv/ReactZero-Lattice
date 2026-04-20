@@ -173,7 +173,7 @@ export function Nav() {
 
           <a
             className="nav-ai-download"
-            href="/AI_GUIDE.md"
+            href={`${import.meta.env.BASE_URL}AI_GUIDE.md`}
             download="lattice-ai-guide.md"
             title="Download the AI implementation guide — drop it into Claude, ChatGPT, Cursor, or any LLM so it can build Lattice tables without guessing."
           >
@@ -186,7 +186,7 @@ export function Nav() {
           </a>
 
           <a
-            href="https://github.com"
+            href="https://github.com/motiondesignlv/ReactZero-Lattice"
             target="_blank"
             rel="noreferrer"
             className="nav-icon-link"
@@ -273,7 +273,7 @@ export function Nav() {
           <a href="#playground" className="nav-mobile-item" onClick={() => setSheetOpen(false)}>Playground</a>
           <a href="#quickstart" className="nav-mobile-item" onClick={() => setSheetOpen(false)}>Docs</a>
           <a
-            href="/AI_GUIDE.md"
+            href={`${import.meta.env.BASE_URL}AI_GUIDE.md`}
             download="lattice-ai-guide.md"
             className="nav-mobile-item"
             onClick={() => setSheetOpen(false)}
@@ -281,7 +281,7 @@ export function Nav() {
             AI guide
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/motiondesignlv/ReactZero-Lattice"
             target="_blank"
             rel="noreferrer"
             className="nav-mobile-item"
