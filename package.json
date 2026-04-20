@@ -1,0 +1,47 @@
+{
+  "name": "reactzero-lattice",
+  "private": true,
+  "description": "ReactZero Lattice — a cell-first React data grid. Monorepo root.",
+  "author": {
+    "name": "Luis Vargas",
+    "url": "https://themotiondesign.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/motiondesignlv/ReactZero-Lattice#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motiondesignlv/ReactZero-Lattice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/motiondesignlv/ReactZero-Lattice/issues"
+  },
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "landing"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:watch": "npm run build:watch --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "size:dist": "node scripts/size-dist.mjs",
+    "landing": "npm run dev --workspace landing",
+    "landing:build": "npm run build --workspace landing",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^6.0.0",
+    "vitest": "^2.0.0",
+    "tsup": "^8.0.0"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "name": "reactzero-lattice",
+  "version": "0.1.0",
+  "description": "ReactZero Lattice — a cell-first React data grid with zero-dep core and opt-in sort/filter/paginate plugins, all tree-shakable from one package.",
+  "keywords": [
+    "reactzero",
+    "lattice",
+    "grid",
+    "datagrid",
+    "table",
+    "headless",
+    "react",
+    "react-grid",
+    "sort",
+    "filter",
+    "pagination",
+    "accessibility",
+    "a11y"
+  ],
+  "author": {
+    "name": "Luis Vargas",
+    "url": "https://themotiondesign.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/motiondesignlv/ReactZero-Lattice#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motiondesignlv/ReactZero-Lattice.git",
+    "directory": "packages/reactzero-lattice"
+  },
+  "bugs": {
+    "url": "https://github.com/motiondesignlv/ReactZero-Lattice/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js",
+      "require": "./dist/core/index.cjs"
+    },
+    "./core/engine": {
+      "types": "./dist/core/engine.d.ts",
+      "import": "./dist/core/engine.js",
+      "require": "./dist/core/engine.cjs"
+    },
+    "./core/types": {
+      "types": "./dist/core/types.d.ts",
+      "import": "./dist/core/types.js",
+      "require": "./dist/core/types.cjs"
+    },
+    "./core/utils": {
+      "types": "./dist/core/utils.d.ts",
+      "import": "./dist/core/utils.js",
+      "require": "./dist/core/utils.cjs"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js",
+      "require": "./dist/react/index.cjs"
+    },
+    "./react/components": {
+      "types": "./dist/react/components.d.ts",
+      "import": "./dist/react/components.js",
+      "require": "./dist/react/components.cjs"
+    },
+    "./react/hooks": {
+      "types": "./dist/react/hooks.d.ts",
+      "import": "./dist/react/hooks.js",
+      "require": "./dist/react/hooks.cjs"
+    },
+    "./react/utils": {
+      "types": "./dist/react/utils.d.ts",
+      "import": "./dist/react/utils.js",
+      "require": "./dist/react/utils.cjs"
+    },
+    "./sort": {
+      "types": "./dist/sort.d.ts",
+      "import": "./dist/sort.js",
+      "require": "./dist/sort.cjs"
+    },
+    "./filter": {
+      "types": "./dist/filter.d.ts",
+      "import": "./dist/filter.js",
+      "require": "./dist/filter.cjs"
+    },
+    "./paginate": {
+      "types": "./dist/paginate.d.ts",
+      "import": "./dist/paginate.js",
+      "require": "./dist/paginate.cjs"
+    },
+    "./styles/a11y.css": "./styles/a11y.css"
+  },
+  "files": [
+    "dist",
+    "styles"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^6.0.0",
+    "vitest": "^2.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  }
+}

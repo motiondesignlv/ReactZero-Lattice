@@ -1,0 +1,95 @@
+/* reactzero-lattice/styles/a11y.css
+ *
+ * Opt-in accessibility baseline for Lattice grids. Import once at the app root:
+ *
+ *   import 'reactzero-lattice/styles/a11y.css'
+ *
+ * Covers:
+ *   - WCAG 2.2 SC 2.5.8 Target Size (Minimum) — 24x24 CSS pixels on library controls
+ *   - WCAG 2.2 SC 2.4.11 Focus Not Obscured — scroll-padding on scrollable grids
+ *   - WCAG 2.1.1 Keyboard — visible focus ring on cells and headers
+ *   - WCAG 1.4.13 Content on Hover/Focus — predictable focus styling
+ *   - prefers-reduced-motion — disables incidental animation
+ */
+
+/* --- Target size: 24x24 CSS pixels for library-emitted interactive elements --- */
+[data-lattice-sort-toggle],
+[data-lattice-filter-clear],
+[data-lattice-filter-input],
+[data-lattice-expand-toggle],
+[data-lattice-page-btn],
+[data-lattice-page-size] {
+  min-width: 24px;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+
+[data-lattice-sort-toggle],
+[data-lattice-filter-clear],
+[data-lattice-expand-toggle],
+[data-lattice-page-btn] {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* --- Keyboard focus ring. Always visible in :focus-visible state. --- */
+[data-lattice-grid] [role="gridcell"]:focus-visible,
+[data-lattice-grid] [role="columnheader"]:focus-visible,
+[data-lattice-grid] [role="row"]:focus-visible,
+[data-lattice-sort-toggle]:focus-visible,
+[data-lattice-filter-clear]:focus-visible,
+[data-lattice-filter-input]:focus-visible,
+[data-lattice-expand-toggle]:focus-visible,
+[data-lattice-page-btn]:focus-visible,
+[data-lattice-page-size]:focus-visible {
+  outline: 2px solid var(--lattice-focus-ring, currentColor);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* --- Sticky / pinned columns: solid background, z-index tiers --- */
+[data-lattice-grid] [role="gridcell"][data-lattice-sticky],
+[data-lattice-grid] [role="columnheader"][data-lattice-sticky] {
+  background: var(--lattice-sticky-bg, Canvas);
+  z-index: var(--lattice-sticky-z-pinned, 1);
+}
+
+[data-lattice-grid] [role="columnheader"][data-lattice-sticky] {
+  z-index: var(--lattice-sticky-z-header, 2);
+}
+
+[data-lattice-grid] [data-lattice-sticky-corner] {
+  z-index: var(--lattice-sticky-z-corner, 3);
+}
+
+/* --- Scrollable regions: prevent sticky headers from obscuring focused content --- */
+[data-lattice-scroll-region] {
+  scroll-padding-top: var(--lattice-header-h, 40px);
+  scroll-padding-left: var(--lattice-pinned-left-w, 0);
+  scroll-padding-right: var(--lattice-pinned-right-w, 0);
+}
+
+/* --- Visually hidden utility for offscreen live regions --- */
+[data-lattice-visually-hidden] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  [data-lattice-grid] *,
+  [data-lattice-grid] *::before,
+  [data-lattice-grid] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

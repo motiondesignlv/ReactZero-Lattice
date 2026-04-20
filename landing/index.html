@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lattice — Composable, cell-first data grid for React</title>
+  <meta name="description" content="Lattice is a zero-dependency, cell-first React data grid. Compose Header / Body / Row / Cell, bolt on sort, filter, and pagination plugins, style it with CSS variables. No third-party runtime dependencies — just React." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect x='16' y='16' width='96' height='96' rx='14' fill='none' stroke='%236366f1' stroke-width='6'/%3E%3Cline x1='16' y1='48' x2='112' y2='48' stroke='%236366f1' stroke-width='4'/%3E%3Cline x1='16' y1='80' x2='112' y2='80' stroke='%236366f1' stroke-width='4'/%3E%3Cline x1='56' y1='16' x2='56' y2='112' stroke='%236366f1' stroke-width='4'/%3E%3Cline x1='88' y1='16' x2='88' y2='112' stroke='%236366f1' stroke-width='4'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js"></script>
+</head>
+<body>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('lattice-theme');
+        var theme = stored === 'dark' || stored === 'light' ? stored : 'light';
+        document.documentElement.dataset.theme = theme;
+      } catch (_) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
